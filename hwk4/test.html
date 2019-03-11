@@ -1,0 +1,33 @@
+<script>
+var url = "https://api-v3.mbta.com/vehicles?api_key=95e6709f9b944f578b6487407171b760&filter[route]=1&include=trip";
+
+async function fetchShuttles(){
+	let response = await fetch(url);
+	let data = await response.json();
+	return data;
+}
+
+fetchShuttles().then(function(data){
+	var buses = data.data;
+	buses.forEach(function(bus){
+		var lat =bus.attributes.latitude;
+		var ln = bus.attributes.longitutde;
+		var pos = {lat:lat,ln:ln};
+		console.log(JSON.stringify(pos));
+	})
+})
+
+.catch(reason => console.log(reason.message))
+
+var makeCall = function(){
+
+
+	// ------------------------------------
+	//	YOUR CODE
+	//	1 - Use fetch to request url
+	//  2 - loop through data
+	//  3 - Write bus position to console
+	// ------------------------------------
+}
+
+</script>                

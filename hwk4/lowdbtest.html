@@ -1,8 +1,5 @@
-    var fetch = require('node-fetch');
+<script>
 var url = "https://api-v3.mbta.com/vehicles?api_key=95e6709f9b944f578b6487407171b760&filter[route]=1&include=trip";
-
-var vehicles = [];
-
 async function fetchShuttles(){
 	let response = await fetch(url);
 	let data = await response.json();
@@ -11,36 +8,29 @@ async function fetchShuttles(){
 
 fetchShuttles().then(function(data){
 	var buses = data.data;
-	
 	buses.forEach(function(bus){
-		var id = bus.attributes.id;
-		var label = bus.attributes.label;
-		var direction_id = bus.attributes.direction_id;
 		var lat =bus.attributes.latitude;
 		var ln = bus.attributes.longitutde;
-		var vehicle = {id:id, label:label, direction_id:direction_id, lat:lat, ln:ln};
-		
-		vehicles.push(vehicle)		
-		
-		console.log(JSON.stringify(vehicles));
+		var pos = {lat:lat,ln:ln};
+		console.log(JSON.stringify(pos));
 	})
-
 })
 
 .catch(reason => console.log(reason.message))
 
 
-const low = require('lowdb')
+/*const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
+ 
 const adapter = new FileSync('db.json')
 const db = low(adapter)
  
-db.defaults({ buses: [] } )
-	.write()
-	
-var buses = db.get('buses');
-buses.push(vehicles).write();
-
-
+db.defaults({ busdata: ["https://api-v3.mbta.com/vehicles?api_key=95e6709f9b944f578b6487407171b760&filter[route]=1&include=trip"],  })
+  .write()
  
+db.get('busdata')
+  .push({ id: 1, title: 'lowdb is awesome'})
+  .write()
+ */
 
+</script>
