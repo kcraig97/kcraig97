@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <script type="text/javascript" src="db.json"> </script>
+    <script type="text/javascript">
+        function load() {
+            var fs = require('db.json');
+        }
+    </script>
+
+    <h1>Select Bus</h1>
+
+    <select id="selectBus">
+            <option>select unique bus</option>
+    </select>
+
+<script type="text/javascript" >
+        // function load() {
+        //    var UniqueIDs = JSON.parse('vehicles')
+        //     console.log(UniqueIDs)
+
+            var select = document.getElementById("selectBus");
+    //  var IDs = [];
+     
+    //  vehicles.forEach( vehicles => {
+    //       IDs.push(vehicles.id);
+    //   })
+       
+        // UniqueIDs = [...new Set(Ids)]
+       UniqueIDs = ['y1715', 'y1731', 'y1737', 'y1805', 'y1822', 'y1823', 'y1847', 'y1869', 'y1879']
+
+       //Loop through UniqueIds array and populate dropdown
+        for(var i = 0; i < UniqueIDs.length; i++){
+            var opt = UniqueIDs[i];
+            var el = document.createElement("option");
+            el.textContent = opt;
+           console.log(el.textContent)
+           el.value = opt;
+           select.appendChild(el)
+      }
+        //  }
+    </script>
+    
+</html>
+
+
