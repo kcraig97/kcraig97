@@ -9,6 +9,5 @@ const fetch = require('node-fetch');
 var buslist = db.get('vehicles').value()
 console.log(buslist);
 var count = buslist.length
-//   .size()
-//   .value()
+
 console.log(count);
